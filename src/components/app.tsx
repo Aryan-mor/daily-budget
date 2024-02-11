@@ -1,6 +1,6 @@
 import {h} from 'preact';
 import {Route, Router} from 'preact-router';
-
+import {SpeedInsights} from "@vercel/speed-insights/next"
 // Code-splitting is automated for `routes` directory
 import Home from '../routes/home';
 import Walet from '../routes/walet';
@@ -20,6 +20,7 @@ const App = () => (
                             <Route path="/Index" component={Walet} />
                         </Router>
                     </main>
+                    <SpeedInsights />
                 </div>
             </ActiveCurrencyContextWrapper>
         </StorageWrapper>
