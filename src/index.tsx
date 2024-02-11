@@ -15,7 +15,7 @@ export function App() {
                 <StorageWrapper>
                     <ActiveCurrencyContextWrapper>
                         {/*<Header />*/}
-                        <main>
+                        <main className="dark text-foreground bg-background min-h-screen overflow-x-hidden">
                             <Router>
                                 <Route path="/" component={Home}/>
                                 <Route path="/walet" component={Walet}/>
