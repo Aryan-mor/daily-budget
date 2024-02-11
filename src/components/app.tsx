@@ -10,7 +10,7 @@ const App = () => (
     <NextUIProvider>
         <StorageWrapper>
             <ActiveCurrencyContextWrapper>
-                <div id="app" className="hidden dark text-foreground bg-background min-h-screen overflow-x-hidden">
+                <div id="app" className="dark text-foreground bg-background min-h-screen overflow-x-hidden">
                     {/*<Header/>*/}
                     <main>
                         <Router>
