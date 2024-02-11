@@ -1,7 +1,6 @@
 import useWallets from '../../hooks/use-wallets';
 import { Button, Input } from '@nextui-org/react';
 import { useCallback, useState } from 'preact/compat';
-import {route} from 'preact-router';
 import {h} from "preact";
 
 const Index = () => {
@@ -11,7 +10,7 @@ const Index = () => {
   const [dailyBudget, setDailyBudget] = useState(wallet.dailyBudget);
 
   const back = useCallback(() => {
-    route('/');
+    // route('/');
   }, []);
 
   const handleSave = useCallback(() => {

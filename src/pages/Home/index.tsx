@@ -22,7 +22,7 @@ function Home() {
     return (
         <div className="flex flex-col container mx-auto py-3 space-y-4">
             <div className="flex my-8 gap-5">
-                <a href="/walet" className="text w-fit text-white bg-blue-400 p-4 rounded-md ">
+                <a href="/src/pages/Walet" className="text w-fit text-white bg-blue-400 p-4 rounded-md ">
                     Wallet:
                     <span
                         className="ml-3 mr-0.5 text-3xl font-semibold">
@@ -52,9 +52,9 @@ function Home() {
                        onChange={(e) => e.target.value && setPrice(Number(e.target.value))}
                        type="number" min="1"
                        step="any"
-                       label="price" />
+                       label="price"/>
             </div>
-            <Icons activeIcon={activeIcon} onActiveIconChange={setActiveIcon} />
+            <Icons activeIcon={activeIcon} onActiveIconChange={setActiveIcon}/>
             <div className="w-[400px]">
                 <Textarea
                     value={text}
@@ -88,7 +88,7 @@ function Home() {
                 {transactions.slice().reverse().map((transaction) => (
                     <div key={transaction.id} className="flex items-center text-white text-lg space-x-2">
             <span
-                className={clsx('text-xl', transaction.icon)} />
+                className={clsx('text-xl', transaction.icon)}/>
                         <span className="font-semibold bg-blue-600/60 px-2 py-1 rounded-md">
               {transaction.price} {Currencies[activeCurrency].symbol}
             </span>
@@ -101,7 +101,7 @@ function Home() {
                                 variant="faded"
                                 aria-label="Remove"
                                 onClick={() => onRemoveTransaction(transaction.id)}>
-                            <span className="text-2xl icon-[solar--trash-bin-minimalistic-2-outline]" />
+                            <span className="text-2xl icon-[solar--trash-bin-minimalistic-2-outline]"/>
                         </Button>
                     </div>
                 ))}
