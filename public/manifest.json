@@ -1,11 +1,13 @@
 {
+  "version": "0.0.1",
   "name": "Daily Budget",
   "short_name": "Daily Budget",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#000",
-  "theme_color": "#00a1ff",
+  "theme_color": "#000",
+  "author": "Aryan Moradi",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

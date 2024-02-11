@@ -45,12 +45,12 @@ function Home() {
     return (
         <div className="flex flex-col container mx-auto py-3 space-y-4">
             <div className="flex my-8 gap-5">
-                <a href="/src/pages/Walet" className="text w-fit text-white bg-blue-400 p-4 rounded-md ">
+                <a href="/walet" className="text w-fit text-white bg-blue-400 p-4 rounded-md ">
                     Wallet:
                     <span
                         className="ml-3 mr-0.5 text-3xl font-semibold">
-            {wallet.budget - sumOfTransaction}
-          </span>
+                        {wallet.budget - sumOfTransaction}
+                      </span>
                     {Currencies[wallet.currency].symbol}
                 </a>
                 <div className="w-full">
