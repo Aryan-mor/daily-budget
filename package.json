@@ -17,6 +17,9 @@
 		"react-dom": "npm:@preact/compat"
 	},
 	"devDependencies": {
+		"@iconify-json/ion": "^1.1.15",
+		"@iconify-json/solar": "^1.1.9",
+		"@iconify/tailwind": "^0.1.4",
 		"@preact/preset-vite": "^2.5.0",
 		"autoprefixer": "^10.4.17",
 		"eslint": "^8.56.0",

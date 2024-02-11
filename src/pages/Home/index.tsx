@@ -3,7 +3,7 @@ import {Currencies, Currency} from '../../interface/currency.interface';
 import {Button, Input, Select, SelectItem, Textarea} from '@nextui-org/react';
 import useTransactions from '../../hooks/use-transactions';
 import {useActiveCurrency} from '../../hooks/use-active-currency-code';
-import {useState} from 'preact/compat';
+import {useCallback, useState} from 'preact/compat';
 import Icons from '../../components/icons';
 import clsx from 'clsx';
 import {h} from "preact";
@@ -15,9 +15,32 @@ function Home() {
         sumOfTransaction,
         transactions,
     }, addTransactions, onRemoveTransaction, onRemoveAllTransactions] = useTransactions();
-    const [price, setPrice] = useState<number | undefined>();
+    const [price, setPrice] = useState<number | undefined>(undefined);
     const [text, setText] = useState<string>('');
-    const [activeIcon, setActiveIcon] = useState<string | undefined>();
+    const [activeIcon, setActiveIcon] = useState<string | undefined>(undefined);
+
+    const handleRemoveAllTransaction = useCallback(() => {
+        const retVal = confirm("Are you sure to remove all transaction?");
+        if (retVal == true) {
+            onRemoveAllTransactions()
+            return true;
+        } else {
+            return false;
+        }
+    }, [onRemoveAllTransactions])
+
+    const handleAddTransaction = useCallback(() => {
+        if (!price || price <= 0 || !activeIcon)
+            return;
+        addTransactions({
+            text,
+            price,
+            icon: activeIcon,
+        });
+        setText('');
+        setPrice(undefined);
+        setActiveIcon(undefined);
+    }, [price, text, activeIcon]);
 
     return (
         <div className="flex flex-col container mx-auto py-3 space-y-4">
@@ -56,31 +79,25 @@ function Home() {
             </div>
             <Icons activeIcon={activeIcon} onActiveIconChange={setActiveIcon}/>
             <div className="w-[400px]">
-                <Textarea
+                <Input
                     value={text}
                     label="Description"
                     placeholder="Enter your description"
                     className="max-w-xs"
+                    onKeyPress={event => {
+                        if (event.key === 'Enter') {
+                            handleAddTransaction()
+                        }
+                    }}
                     onChange={(e) => setText(e.target.value)}
                 />
             </div>
             <div className="flex space-x-3">
                 <Button
-                    onClick={() => {
-                        if (!price || price <= 0 || !activeIcon)
-                            return;
-                        addTransactions({
-                            text,
-                            price,
-                            icon: activeIcon,
-                        });
-                        setText('');
-                        setPrice(undefined);
-                        setActiveIcon(undefined);
-                    }}>
+                    onClick={handleAddTransaction}>
                     Add transaction
                 </Button>
-                <Button onClick={onRemoveAllTransactions}>
+                <Button isDisabled={transactions.length <= 0} onClick={handleRemoveAllTransaction}>
                     Remove All transactions
                 </Button>
             </div>

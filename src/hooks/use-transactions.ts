@@ -15,7 +15,7 @@ type ReturnType = [
   transactions: { sumOfTransaction: number, transactions: Transaction[] },
   onAddTransaction:(transaction: Omit<Transaction, 'id' | 'createAt'>) => void,
   onRemoveTransaction:(transaction: Transaction['id']) => void,
-  onAllTransactions:() => void,
+  onRemoveAllTransactions:() => void,
 ];
 const useTransactions = (currencyCode?: CurrencyCode) => {
   const [activeCurrency] = useActiveCurrency();
