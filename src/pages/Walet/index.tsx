@@ -2,16 +2,18 @@ import useWallets from '../../hooks/use-wallets';
 import { Button, Input } from '@nextui-org/react';
 import { useCallback, useState } from 'preact/compat';
 import {h} from "preact";
+import {useLocation} from "preact-iso";
 
 const Index = () => {
   const { wallet, onWalletChange } = useWallets();
 
   const [budget, setBudget] = useState(wallet.budget);
   const [dailyBudget, setDailyBudget] = useState(wallet.dailyBudget);
+  const location = useLocation()
 
   const back = useCallback(() => {
-    // route('/');
-  }, []);
+      location.route('/');
+  }, [location]);
 
   const handleSave = useCallback(() => {
     onWalletChange({
